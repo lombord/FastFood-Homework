@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% block title %}
+  {{ dish.name }}
+{% endblock title %}
+{% block content %}
+  <section>
+    <div class="card">
+      <img src="{{ dish.image.url }}" class="card-img-top" alt="..." />
+      <div class="card-body p-4">
+        <h1 class="text-center mb-4">
+          {{ dish.name }}
+          <span class="badge bg-warning shadow-sm fs-4">
+            {{ dish.price }}$
+          </span>
+        </h1>
+        <div>
+          <h3 class="bg-danger badge fs-6 mb-3">
+            {{ dish.category }}
+          </h3>
+          <p class="card-text">
+            {{ dish.description|linebreaksbr }}
+          </p>
+          <div class="d-flex gap-2 flex-wrap justify-content-end">
+            <a class="btn btn-warning" href="{{ dish.get_update_url }}">Edit</a>
+            <a class="btn btn-danger" href="{{ dish.get_delete_url }}">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

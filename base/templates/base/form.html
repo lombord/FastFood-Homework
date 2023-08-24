@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+  <section>
+    <div>
+      <form action=""
+            method="post"
+            {% if is_file %}
+              enctype="multipart/form-data"
+            {% endif %}>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="text-end mt-4">
+          <button type="submit" class="btn btn-danger text-capitalize">
+            {{ submit|default:'submit' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock content %}
